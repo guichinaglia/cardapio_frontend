@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" >
+    <button aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <h1>Chinaglia's Burger</h1>
+  </mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #drawer layout="column" [mode]="'over'">
+    <mat-nav-list>
+      <a mat-list-item href="main-page">Página principal</a>
+      <a mat-list-item href="show-ingredients">Mostrar Ingredientes</a>
+      <a mat-list-item href="register-ingredients">Cadastro de Ingrediente</a>
+      <a mat-list-item href="create-order">Montar Pedido</a>
+      <a mat-list-item href="show-orders">Pedidos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+    <mat-sidenav-content layout="column" flex>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  
+  </mat-sidenav-container>
+

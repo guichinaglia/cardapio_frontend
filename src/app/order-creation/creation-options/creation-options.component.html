@@ -1,0 +1,75 @@
+<div>
+  <table mat-table [dataSource]="combinations" class="table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell class="header-style" *matHeaderCellDef>
+        <strong>No.</strong>
+      </th>
+      <td mat-cell *matCellDef="let combinations"> {{combinations.combId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell class="header-style" *matHeaderCellDef>
+        <strong>Nome</strong>
+      </th>
+      <td mat-cell *matCellDef="let combinations"> {{combinations.combName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ingredients">
+        <th mat-header-cell class="header-style" *matHeaderCellDef>
+          <strong>Ingredientes</strong>
+        </th>
+        <td mat-cell class="ingredients-margin" *matCellDef="let combinations">
+            <li *ngFor="let ingredients of combinations.ingredients">
+              {{ingredients.ingName}}
+            </li>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+          <th mat-header-cell class="header-style " *matHeaderCellDef>
+            <strong>Valor</strong>
+          </th>
+          <td mat-cell *matCellDef="let combinations">
+            <li *ngFor="let ingredients of combinations.ingredients">
+                <!--{{sum(combinations) | number}}-->
+                {{ingredients.ingPrice | currency: "R$ "}}
+            </li>
+          </td>
+        </ng-container>
+<!--
+      <ng-container matColumnDef="total">
+          <th mat-header-cell class="header-style" *matHeaderCellDef>
+            <strong>Total</strong>
+          </th>
+          <td mat-cell *matCellDef="let combinations">
+              <span *ngFor="let ingredients of combinations.ingredients">
+                <script>
+                  sum(ingredients.ingPrice);
+                </script>                
+              </span>
+          </td>
+        </ng-container>
+    -->  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell class="header-style center-align" *matHeaderCellDef>
+        <strong>Escolher</strong>
+      </th>
+      <td mat-cell *matCellDef="let combination" class="center-align"> 
+        <button mat-raised-button class="button-style" color="primary">
+          <mat-icon class="icon-style" aria-label="Side nav toggle icon">shopping_cart</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns : displayedColumns;"></tr>
+    
+  </table>
+</div>
+
+<div>
+    <button mat-raised-button class="custom-button-style" color="warn">
+      <strong>Montar Lanche</strong>
+      <mat-icon class="icon-style padding-left" aria-label="Side nav toggle icon">label</mat-icon>
+    </button>
+</div>

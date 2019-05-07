@@ -1,0 +1,40 @@
+<div>
+  <table mat-table [dataSource]="orders" class="table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell class="header-style" *matHeaderCellDef>
+        <strong>No.</strong>
+      </th>
+      <td mat-cell *matCellDef="let orders"> {{orders.orderId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="order_code">
+      <th mat-header-cell class="header-style center-align" *matHeaderCellDef>
+        <strong>Código do Pedido</strong>
+      </th>
+      <td mat-cell class="center-align" *matCellDef="let orders"> {{orders.orderCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ingredients">
+      <th mat-header-cell class="header-style " *matHeaderCellDef>
+        <strong>Ingredientes</strong>
+      </th>
+      <td mat-cell class="ingredients-margin" *matCellDef="let orders">
+        <li *ngFor="let ingredients of orders.ingredients">
+            <!--{{sum(combinations) | number}}-->
+            {{ingredients.ingName}}
+        </li>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="order_status">
+        <th mat-header-cell class="header-style center-align" *matHeaderCellDef>
+          <strong>Status do Pedido</strong>
+        </th>
+        <td mat-cell class="center-align" *matCellDef="let orders"> {{orders.orderStatus}} </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns : displayedColumns;"></tr>
+  
+  </table>
+</div>
